@@ -248,8 +248,16 @@ L012A:
 
 	call boot_chime;					// play chime
 
-; Check this divMMC device has more than 32K (4 pages) of memory
-	ld a, 4;							// Start at page 4
+;	// use CPU speed as timer delay for boot chime
+	ld bc, $8e3b;						// Prism port
+	xor a;								// LD A, 0; 3.5 MHz
+	out (c), a;							// set it
+
+;	// Check this divMMC device has more than 32K (4 pages) of memory
+;	ld a, 4;							// Start at page 4
+
+;	// configure 32K of OS RAM
+	ld a, 3;							// start at page 3
 
 L013B:
 	out (mmcram), a;					// set divMMC memory page
@@ -266,13 +274,13 @@ L013B:
 	dec a;								// page=page-1
 	cp $ff;								// COPY, 255d
 	jr nz, L013B;						// if we've not just done page 0, loop back
-	ld a, 4;							//
-	out (mmcram), a;					// back to page 4
-	ld hl, $2000;						// address top 8K of ROM area
-	ld a, (hl);							// get value
-	inc (hl);							// increment it
-	cp (hl);							// check page 4 is writable
-	jr nz, L0169;						// if so, jump to L0169
+;	ld a, 4;							//
+;	out (mmcram), a;					// back to page 4
+;	ld hl, $2000;						// address top 8K of ROM area
+;	ld a, (hl);							// get value
+;	inc (hl);							// increment it
+;	cp (hl);							// check page 4 is writable
+;	jr nz, L0169;						// if so, jump to L0169
 	ld l, $1c;							// else?
 
 L0169:
