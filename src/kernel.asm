@@ -1558,7 +1558,7 @@ L087F:
 	jr nz, L0896;						// 
 	ld a, c;							// 
 	or c;								// 
-	call nz, restart_10;						// 
+	call nz, restart_10;				// 
 	ret;								// 
 
 L0894:
@@ -5770,7 +5770,7 @@ L2140:
 
 L215E:
 	ld hl, $2E69;						// 
-	ld de, restart_10;						// 
+	ld de, restart_10;					// 
 
 L2164:
 	ld bc, $FFFD;						// 
@@ -5787,7 +5787,7 @@ L2164:
 	ret;								// 
 
 L2177:
-	ld de, restart_10;						// 
+	ld de, restart_10;					// 
 
 L217A:
 	ld bc, $FFFD;						// 
