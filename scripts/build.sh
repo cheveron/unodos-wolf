@@ -1,5 +1,5 @@
 cd src
-wine ../zeus/zcl kernel.asm
+../rasm/rasm kernel.asm
 cd ../bin
 mv unodos0.sys unodos.sys
 cat unodos1.sys >> unodos.sys

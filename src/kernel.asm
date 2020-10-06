@@ -17,11 +17,9 @@
 ; 	// This source is compatible with Zeus
 ;	// (http://www.desdes.com/products/oldfiles)
 
-	zoWarnFlow = false;					// prevent pseudo op-codes triggering warnings.
-
-	output_bin "../bin/unodos.rom",0,$2000
-	output_bin "../bin/unodos0.sys",$2000,lower_end-$2000
-	output_bin "../bin/unodos1.sys",$3000,upper_end-$3000
+	save "../bin/unodos.rom",0,$2000
+	save "../bin/unodos0.sys",$2000,lower_end-$2000
+	save "../bin/unodos1.sys",$3000,upper_end-$3000
 
 	include "os.inc"
 	include "io.inc"
@@ -1453,7 +1451,7 @@ L07FE:
 	ret;								// 
 	add a, b;							// 
 
-	dbtb "No system";					//
+	str "No system";					//
 
 L081C:
 	inc e;								// 
@@ -2341,9 +2339,9 @@ pr_msg:
 	inc hl;								// 
 	jr pr_msg;							// 
 
-	dbtb "UnoDOS error #";				//
+	str "UnoDOS error #";				//
 
-	dbtb "Too many open files";			//
+	str "Too many open files";			//
 
 ;	// jumped from RST $18 (CALLBAS)
 L0CBD:
